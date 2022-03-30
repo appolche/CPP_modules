@@ -5,23 +5,22 @@
 #include <string>
 #include <iomanip>
 
-# define MAX_CONTACT 8
-
 class Contact {
 
     public:
         Contact();
         ~Contact();
-		std::string GetFirstName();
-		std::string GetLastName();
-		std::string GetNickname();
-		std::string GetPhoneNumber();
-		std::string GetSecret();
-		void SetFirstName(std::string s);
-		void SetLastName(std::string s);
-		void SetNickname(std::string s);
-		void SetPhoneNumber(std::string s);
-		void SetSecret(std::string s);
+		
+		std::string getFirstName() const;
+		std::string getLastName() const;
+		std::string getNickname() const;
+		std::string getPhoneNumber() const;
+		std::string getDarkestSecret() const;
+		void setFirstName(std::string s);
+		void setLastName(std::string s);
+		void setNickname(std::string s);
+		void setPhoneNumber(std::string s);
+		void setDarkestSecret(std::string s);
 
     private:
 		std::string first_name;
@@ -29,7 +28,6 @@ class Contact {
 		std::string nickname;
 		std::string phone_number;
 		std::string darkest_secret;
-
 };
 
 #endif

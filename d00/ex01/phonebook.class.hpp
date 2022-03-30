@@ -3,16 +3,19 @@
 
 # include "Contact.class.hpp"
 
-class Phonebook {
+# define MAX_CONTACT 8
+
+class PhoneBook {
 
 	public:
-		Phonebook( void );
-		~Phonebook( void );
-		void	SetContact(int index);
-		Contact	GetContact(int index) const;
+		PhoneBook();
+		~PhoneBook();
+		
+		void	addContact(int index);
+		Contact	searchContact(int index) const;
 
 	private:
-		Contact _contact[8];
+		Contact contact_list[8];
 };
 
 #endif

@@ -1,9 +1,9 @@
-NAME = phonebook
+NAME = StopTheWar
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp PhoneBook.class.cpp Contact.class.cpp
-HDRS = PhoneBook.class.hpp Contact.class.hpp
+SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+HDRS = Weapon.hpp HumanA.hpp HumanB.hpp
 
 OBJ	= $(SRC:.cpp=.o)
 

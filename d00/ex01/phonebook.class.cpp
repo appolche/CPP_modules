@@ -1,32 +1,33 @@
-#include "phonebook.class.hpp"
+#include "PhoneBook.class.hpp"
 
-Phonebook::Phonebook() {}
+PhoneBook::PhoneBook() {}
 
-Phonebook::~Phonebook() {}
+PhoneBook::~PhoneBook() {}
 
-Contact	Phonebook::GetContact(int index) const{
+Contact	PhoneBook::searchContact(int index) const {
 
-	return this->_contact[index];
+	return (this->contact_list[index]);
 }
 
-void	Phonebook::SetContact(int index) {
-
+void	PhoneBook::addContact(int index) {
+	
 	std::string	buf;
 
-	std::cout << "Input first name" << std::endl;
-	std::getline( std::cin, buf );
-	this->_contact[index].SetFirstName(buf);
-	std::cout << "Input last name" << std::endl;
-	std::getline( std::cin, buf );
-	this->_contact[index].SetLastName(buf);
-	std::cout << "Input nickname" << std::endl;
-	std::getline( std::cin, buf );
-	this->_contact[index].SetNickname(buf);
-	std::cout << "Input phone number" << std::endl;
-	std::getline( std::cin, buf );
-	this->_contact[index].SetPhoneNumber(buf);
-	std::cout << "Input darkest secret" << std::endl;
-	std::getline( std::cin, buf );
-	this->_contact[index].SetSecret(buf);
-	std::cout << "CONTACT SUCСESSFULLY ADDED!\n";
+	index =  index % MAX_CONTACT;
+	std::cout << "First name" << std::endl;
+	std::getline(std::cin, buf);
+	this->contact_list[index].setFirstName(buf);
+	std::cout << "Last name" << std::endl;
+	std::getline(std::cin, buf);
+	this->contact_list[index].setLastName(buf);
+	std::cout << "Nickname" << std::endl;
+	std::getline(std::cin, buf);
+	this->contact_list[index].setNickname(buf);
+	std::cout << "Phone number" << std::endl;
+	std::getline(std::cin, buf);
+	this->contact_list[index].setPhoneNumber(buf);
+	std::cout << "Darkest secret" << std::endl;
+	std::getline(std::cin, buf);
+	this->contact_list[index].setDarkestSecret(buf);
+	std::cout << "CONTACT SUCCESSFULLY ADDED!\n";
 }

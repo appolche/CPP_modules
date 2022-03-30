@@ -1,7 +1,47 @@
-#include "phonebook.class.hpp"
+#include "PhoneBook.class.hpp"
 
-void	formatOutput(std::string str)
-{
+static bool isDigitString(std::string buf) {
+
+	return (buf.find_first_not_of("0123456789") == std::string::npos);
+}
+
+static bool isValidIndex(std::string buf, int index) {
+
+	int		ret;
+	
+	if (!isDigitString(buf))
+		return (false);
+	ret = std::atoi(&buf[0]);
+	if (ret >= 0 && ret <= index)
+		return (true);
+	else
+		return (false);
+}
+
+static int	validIndex(int index) {
+
+	std::string	buf;
+
+	std::cout << "Index: ";
+	std::getline(std::cin, buf);
+	if (buf.length() && isValidIndex(buf, index))
+		return (std::atoi(&buf[0]));
+	std::cout << "Error: Invalid index\n";
+	return (-1);
+}
+
+static void	printContactInfo(PhoneBook book, int i) {
+
+	Contact currentContact = book.searchContact(i);
+	std::cout << "FIRST NAME: " << currentContact.getFirstName() << std::endl;
+	std::cout << "LAST NAME: " << currentContact.getLastName() << std::endl;
+	std::cout << "NICKNAME: " << currentContact.getNickname() << std::endl;
+	std::cout << "PHONE NUMBER: " << currentContact.getPhoneNumber() << std::endl;
+	std::cout << "DARKEST SECRET: " << currentContact.getDarkestSecret() << std::endl;
+}
+
+void	formatOutput(std::string str) {
+
 	std::cout << std::setw(10);
     if (str.length() > 10)
 		std::cout << str.substr(0, 9).append(".");
@@ -10,7 +50,7 @@ void	formatOutput(std::string str)
 	std::cout << std::setw(0);
 }
 
-void	headerOut() {
+static void	headerOut() {
 
 	formatOutput("INDEX");
 	std::cout << "|";
@@ -22,93 +62,59 @@ void	headerOut() {
 	std::cout << std::endl;
 }
 
-static bool isDigitString(std::string buf) {
-
-	return buf.find_first_not_of("0123456789") == std::string::npos;
-}
-
-static bool isValidIndex(std::string buf, int index) {
-
-	int		ret;
-	
-	if (!isDigitString(buf))
-		return (0);
-	ret = std::atoi(&buf[0]);
-	return ret >= 0 && ret <= index;
-}
-
-int	validIndex( int index ) {
-
-	std::string	buf;
-
-	std::cout << "Input index: ";
-	std::getline( std::cin, buf );
-	if (buf.length() && isValidIndex(buf, index))
-		return std::atoi(&buf[0]);
-	std::cout << "Error: Invalid index\n";
-	return (-1);
-}
-
-void	indexInfo(Phonebook Book, int i ) {
-
-	if ( i == -1 )
-		return ;
-	std::cout << "FIRST NAME: " << Book.GetContact(i).GetFirstName() << "\n";
-	std::cout << "LAST NAME: " << Book.GetContact(i).GetLastName() << "\n";
-	std::cout << "NICKNAME: " << Book.GetContact(i).GetNickname() << "\n";
-	std::cout << "PHONE NUMBER: " << Book.GetContact(i).GetPhoneNumber() << "\n";
-	std::cout << "DARKEST SECRET: " << Book.GetContact(i).GetSecret() << "\n";
-}
-
-void	SearchCmd(Phonebook Book, int max_ind) {
+static void	searchCmd(PhoneBook book, int contactCount) {
 
 	headerOut();
-	for (int i = 0; i <= max_ind; i++)
-	{
+	if (contactCount == -1){
+		std::cout << "\n\tYour Phonebook is empty!\n"<< std::endl;
+		return ;
+	}
+	for (int i = 0; i <= contactCount; i++){
 		std::cout << std::setw(10) << i << std::setw(0);
 		std::cout << "|";
-		formatOutput( Book.GetContact(i).GetFirstName() );
+		formatOutput(book.searchContact(i).getFirstName());
 		std::cout << "|";
-		formatOutput( Book.GetContact(i).GetLastName() );
+		formatOutput(book.searchContact(i).getLastName());
 		std::cout << "|";
-		formatOutput( Book.GetContact(i).GetNickname() );
-		std::cout << std::endl;
+		formatOutput(book.searchContact(i).getNickname());
+		std::cout << std::endl;	
 	}
-	if (max_ind == -1)
-		return ;
 	std::cout << "To see more information about contact, ";
 	std::cout << "please, input index.\n";
-	indexInfo( Book, validIndex( max_ind ) );
-	
+	int inputIndex = validIndex(contactCount);
+	if (inputIndex == -1)
+		return ;
+	printContactInfo(book, inputIndex);
 }
 
-int main( void ) {
-
-    Phonebook   Book;
-	int 		index = -1;
-	int			max_index = -1;
-    std::string cmd;
-
+static void print_greeting()
+{
 	std::cout << "\n*******************************************\n";
 	std::cout << "\tHELLO! THIS IS PHONEBOOK!\n";
 	std::cout << " Please, input command ADD, SEARCH or EXIT\n";
 	std::cout << "*******************************************\n\n";
-	while (1)
-    {
-		do	{
-			std::cout << "Input command: ";
-			std::getline(std::cin, cmd);
-		}	while (cmd.length() == 0);
-        if ( cmd == "EXIT" )
+}
+
+int main() {
+
+    PhoneBook   book;
+    std::string cmd;
+	int 		index = -1;
+	int			contactCount = -1;
+
+	print_greeting();
+	while (1) {
+		std::cout << "Input command: ";
+		std::getline(std::cin, cmd);
+        if (cmd == "EXIT")
             break ;
-        else if ( cmd == "ADD" )
-		{
-			if (max_index < MAX_CONTACT - 1) max_index++;
-			index =  ++index % MAX_CONTACT;
-			Book.SetContact(index);
+        else if (cmd == "ADD") {
+			if (contactCount < MAX_CONTACT - 1) 
+				contactCount++;
+			book.addContact(++index);
 		}
-        else if ( cmd == "SEARCH" )
-            SearchCmd(Book, max_index );
+        else if (cmd == "SEARCH")
+            searchCmd(book, contactCount);
     }
     return (0);
 }

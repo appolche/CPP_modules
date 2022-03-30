@@ -1,9 +1,8 @@
-NAME = phonebook
+NAME = addressManipulations
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp PhoneBook.class.cpp Contact.class.cpp
-HDRS = PhoneBook.class.hpp Contact.class.hpp
+SRC = main.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
@@ -12,7 +11,7 @@ OBJ	= $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HDRS)
+$(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
