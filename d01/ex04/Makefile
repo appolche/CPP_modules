@@ -1,9 +1,8 @@
-NAME = warIsBadThing
+NAME = fileMainupaltions
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
-HDRS = Weapon.hpp HumanA.hpp HumanB.hpp
+SRC = main.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
@@ -12,7 +11,7 @@ OBJ	= $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HDRS)
+$(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:

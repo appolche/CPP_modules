@@ -1,9 +1,9 @@
-NAME = warIsBadThing
+NAME = karenChanged
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
-HDRS = Weapon.hpp HumanA.hpp HumanB.hpp
+SRC = main.cpp Harl.cpp
+HDRS = Harl.hpp
 
 OBJ	= $(SRC:.cpp=.o)
 
