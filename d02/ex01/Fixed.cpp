@@ -9,13 +9,13 @@ Fixed::Fixed() {
 Fixed::Fixed(int const n) {
 
 	std::cout << "Int constructor called" << std::endl;
-	this->value = n * (1 << this->nbits);
+	this->value = n * (1 << this->nbits); // n * 256
 }
 
 Fixed::Fixed(float const n) {
 
 	std::cout << "Float constructor called" << std::endl;
-	this->value = (int)roundf(n * (1 << this->nbits));
+	this->value = (int)roundf(n * (1 << this->nbits)); // округление флота (42.42f * 256)
 }
 
 Fixed::Fixed(Fixed const & src) {
@@ -36,9 +36,14 @@ Fixed & Fixed::operator=(Fixed const & rhs) {
 	return *this;
 }
 
+std::ostream & operator<<(std::ostream & os, Fixed const & rhs)
+{
+	os << rhs.toFloat();
+	return os;
+}
+
 int		Fixed::getRawBits() const {
 
-	// std::cout << "getRawBits member function called" << std::endl;
 	return this->value;
 }
 
@@ -57,9 +62,3 @@ int		Fixed::toInt(void) const
 	return (int)(this->value >> this->nbits);
 }
 
-
-std::ostream & operator<<(std::ostream & os, Fixed const & rhs)
-{
-	os << rhs.toFloat();
-	return os;
-}

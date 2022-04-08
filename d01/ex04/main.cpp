@@ -52,7 +52,6 @@ int main(int argc, char **argv) {
         buffer = tmp + buffer;
         tmp = buffer + '\n';
     }
-    // std::cout << buffer << std::endl;
     fout << buffer;
 
     fin.close();

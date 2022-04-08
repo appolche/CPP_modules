@@ -10,6 +10,12 @@ Brain::Brain() {
 		}
 }
 
+Brain::Brain(std::string anotherIdeas) {
+    std::cout << "Brain Not default constructor called" << std::endl;
+    for (int i = 0; i < 100; i++)
+			ideas[i] = anotherIdeas;
+}
+
 Brain::Brain(Brain const &rhs) {
     std::cout << "Brain copy constructor called" << std::endl;
     for (int i = 0; i < 100; i++)

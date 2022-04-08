@@ -1,4 +1,4 @@
-NAME = fixed_ex01
+NAME = fixed_ex02
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98

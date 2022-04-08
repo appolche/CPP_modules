@@ -18,13 +18,16 @@ int main() {
     std::cout << "------" << std::endl;
     
 	const WrongAnimal* wrong_animal = new WrongAnimal();
-	const WrongAnimal* wrong_cat = new WrongCat();
+	const WrongAnimal* wrong_cat_animal = new WrongCat();
+    const WrongCat* wrong_cat = new WrongCat();
     std::cout << "------" << std::endl;
 
 	std::cout << wrong_animal->getType() << " says : ";
-	wrong_cat->makeSound();
-	std::cout << wrong_cat->getType() << " says : ";
 	wrong_animal->makeSound();
+	std::cout << wrong_cat_animal->getType() << " says : ";
+	wrong_cat_animal->makeSound();
+    std::cout << wrong_cat->getType() << " says : ";
+	wrong_cat->makeSound();
 
 	delete wrong_animal;
 	delete wrong_cat;

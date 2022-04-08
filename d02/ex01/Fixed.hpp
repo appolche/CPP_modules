@@ -10,6 +10,8 @@ class Fixed{
 	    Fixed();
 		Fixed(int const		n);
 		Fixed(float const	n);
+
+		
 	    Fixed(Fixed const & src);
 	    ~Fixed();
 	    Fixed & operator=(Fixed const & rhs);

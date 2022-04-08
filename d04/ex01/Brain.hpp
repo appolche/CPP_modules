@@ -8,6 +8,7 @@ class Brain {
     
     public:
         Brain();
+        Brain(std::string anotherIdeas);
         Brain(Brain const &rhs);
         virtual ~Brain();
 

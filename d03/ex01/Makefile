@@ -1,9 +1,9 @@
-NAME = fixed_ex01
+NAME = ScavTrap
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Fixed.cpp
-HDRS = Fixed.hpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+HDRS = ClapTrap.hpp ScavTrap.hpp
 
 OBJ	= $(SRC:.cpp=.o)
 

@@ -7,9 +7,9 @@ class Fixed{
 
     public:
 	    Fixed();
-	    Fixed(Fixed const & src);
+	    Fixed(Fixed const & src); //конструктор копирования
 	    ~Fixed();
-	    Fixed & operator=(Fixed const & rhs);
+	    Fixed & operator=(Fixed const & src); //оператор
 
     	int		getRawBits() const;
     	void	setRawBits(int const raw);
