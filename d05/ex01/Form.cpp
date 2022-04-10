@@ -1,31 +1,22 @@
 #include "Form.hpp"
 
 Form::Form() 
-			: _name("Default_form"), _signed(false), _signGrade(150), _execGrade(150) {
-	// std::cout << "Default constructor called" << std::endl;
-}
+: _name("Default_form"), _signed(false), _signGrade(150), _execGrade(150) {}
 
-Form::Form(const std::string & _name, int signGrade, int execGrade) 
-			: _name(_name), _signed(false) {
+Form::Form(const std::string & name, const int signGrade, const int execGrade) 
+: _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
 	checkGrade(_signGrade);
     checkGrade(_execGrade);
-	this->_signGrade = signGrade;
-    this->_execGrade = execGrade;
-	// std::cout << "Not default constructor called" << std::endl;
 }
 
 Form::Form(Form const & rhs) 
-			: _name(rhs._name), _signed(rhs._signed), _signGrade(rhs._signGrade), _execGrade(rhs._execGrade) {
+: _name(rhs._name), _signed(rhs._signed), _signGrade(rhs._signGrade), _execGrade(rhs._execGrade) {
 	*this = rhs;
-    // std::cout << "Copy constructor called" << std::endl;
 }
 
-Form::~Form() {
-	// std::cout << "Destructor called" << std::endl;
-}
+Form::~Form() {}
 
 Form & Form::operator=(Form const & rhs) {
-	// std::cout << "Copy assignment operator called" << std::endl;
 	this->_signed = rhs._signed;
 	return *this;
 }

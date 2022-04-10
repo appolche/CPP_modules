@@ -30,8 +30,10 @@ class Bureaucrat {
         int		    getGrade() const;
         void increaseGrade();
 	    void decreaseGrade();
-        //new func that allows buro to sing some Form obj
+        //func that allows buro to sing some Form obj
         void signForm(Form &form) const; 
+        //func that allows buro to execute some Form inherit obj
+        void executeForm(Form const & form) const;
 
     private:
         const std::string name;
