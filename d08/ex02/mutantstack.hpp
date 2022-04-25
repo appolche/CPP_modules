@@ -6,59 +6,33 @@
 
 template <typename T>
 class MutantStack : public std::stack<T> {
-public:
-	typedef typename std::stack<T>::container_type::iterator iterator;
-	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
-	typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
-	typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
+	public:
+		MutantStack(): std::stack<T>() {}
+		MutantStack(const MutantStack &another) {
+			std::stack<T>::operator=(another);
+		}
+		~MutantStack() {}
 
-	MutantStack()
-		: std::stack<T>() {
-		
-	}
-	MutantStack(const MutantStack &another) {
-		std::stack<T>::operator=(another);
-	}
-	~MutantStack(){
-		
-	}
+		MutantStack &operator=(const MutantStack &another) {
+			std::stack<T>::operator=(another);
+			return *this;
+		}
 
-	MutantStack &operator=(const MutantStack &another){
-		std::stack<T>::operator=(another);
-		return *this;
-	}
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		iterator begin() { return this->std::stack<T>::c.begin(); }
+		iterator end() { return this->std::stack<T>::c.end(); }
 
-	iterator begin(){
-		return this->std::stack<T>::c.begin();
-	}
+		typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+		const_iterator cbegin() { return this->std::stack<T>::c.cbegin(); }
+		const_iterator cend() { return this->std::stack<T>::c.cend(); }
 
-	const_iterator cbegin(){
-		return this->std::stack<T>::c.cbegin();
-	}
+		typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+		reverse_iterator rbegin() { return this->std::stack<T>::c.rbegin(); }
+		reverse_iterator rend() { return this->std::stack<T>::c.rend(); }
 
-	iterator end(){
-		return this->std::stack<T>::c.end();
-	}
-
-	const_iterator cend(){
-		return this->std::stack<T>::c.cend();
-	}
-
-	reverse_iterator rbegin(){
-		return this->std::stack<T>::c.rbegin();
-	}
-
-	const_reverse_iterator crbegin(){
-		return this->std::stack<T>::c.crbegin();	
-	}
-
-	reverse_iterator rend(){
-		return this->std::stack<T>::c.rend();
-	}
-
-	const_reverse_iterator crend(){
-		return this->std::stack<T>::c.crend();
-	}
+		typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
+		const_reverse_iterator crbegin() { return this->std::stack<T>::c.crbegin(); }
+		const_reverse_iterator crend() { return this->std::stack<T>::c.crend(); }
 
 };
 

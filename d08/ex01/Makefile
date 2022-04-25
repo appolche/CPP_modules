@@ -1,12 +1,12 @@
-NAME	=	ex01
+NAME	=	span
 
-CC		=	clang++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
+CC		=	c++
+FLAGS	=	-Wall -Wextra -Werror -g -std=c++98
 GCC		=	$(CC) $(FLAGS)
 
 SRCS	=	main.cpp span.cpp
-HDRS	=	span.hpp
 OBJS	=	$(SRCS:.cpp=.o)
+HDRS	=	span.hpp
 
 all: $(NAME)
 

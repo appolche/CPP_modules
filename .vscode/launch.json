@@ -8,7 +8,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "/Users/dleaves/Desktop/cpp_modules/d05/ex02/bureaucrat",
+            "program": "/Users/dleaves/Desktop/cpp_mod/d08/ex01/span",
             "args": [],
             "cwd": "${workspaceFolder}"
         }

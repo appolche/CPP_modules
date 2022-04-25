@@ -1,10 +1,10 @@
-NAME	=	ex02
+NAME	=	mutantstack
 
-CC		=	clang++
+CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 GCC		=	$(CC) $(FLAGS)
 
-SRCS	=	main.cpp mutantstack.cpp
+SRCS	=	main.cpp
 HDRS	=	mutantstack.hpp
 OBJS	=	$(SRCS:.cpp=.o)
 
